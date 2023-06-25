@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -14,9 +14,15 @@ export class RecipeListComponent {
       'https://img.delicious.com.au/fVd1u6k7/w1200/del/2022/02/chicken-chickpea-curry-163942-1.jpg'
     ),
     new Recipe(
-      'A test recipe',
-      'this is simply a test',
+      'A second test recipe',
+      'this is simply a test of second recipe',
       'https://img.delicious.com.au/fVd1u6k7/w1200/del/2022/02/chicken-chickpea-curry-163942-1.jpg'
     ),
   ];
+
+  @Output() recipeWasSelected = new EventEmitter<Recipe>()
+
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe)
+  };
 }
